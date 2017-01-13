@@ -2,19 +2,22 @@ define('photo-model', ['backbone', 'jquery'], function (Backbone, $) {
 	'use strict';
 
 	return Backbone.Model.extend({
-		// Model properties
-		title: '',
-		link: '',
-		mediaUrl: '',
-		dateTaken: '',
-		description: '',
-		datePublished: '',
-		author: '',
-		authorId: '',
-		tags: '',
+		attributes: {
+			title: '',
+			link: '',
+			mediaUrl: '',
+			dateTaken: '',
+			description: '',
+			datePublished: '',
+			author: '',
+			authorId: '',
+			tags: ''
+		},
 
 		// Override URL since it has nothing to do with the model's ID
-		url: function () { return this.mediaUrl; },
+		url: function () {
+			return this.get('mediaUrl');
+		},
 
 		// Override sync to only allow get requests
 		sync: function (method) {
